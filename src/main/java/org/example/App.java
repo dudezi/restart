@@ -47,12 +47,7 @@ public class App {
                 String value = paramsStr[1];
                 int idx = Integer.parseInt(value);
 
-                Article article = null;
-                for(Article item : articleList) {
-                    if(item.getId() == idx) {
-                        article = item;
-                    }
-                }
+                Article article = _getFindById(idx);
 
                 if (article == null) {
                     System.out.printf("%d번 게시물이 존재하지 않습니다.\n", idx);
@@ -68,12 +63,7 @@ public class App {
                 String value = paramsStr[1];
                 int idx = Integer.parseInt(value);
 
-                Article article = null;
-                for(Article item : articleList) {
-                    if(item.getId() == idx) {
-                        article = item;
-                    }
-                }
+                Article article = _getFindById(idx);
 
                 if (article == null) {
                     System.out.printf("%d번 게시물이 존재하지 않습니다.\n", idx);
@@ -92,5 +82,14 @@ public class App {
                 }
             }
         }
+    }
+
+    private Article _getFindById (int idx) {
+        for(Article item : articleList) {
+            if(item.getId() == idx) {
+                return item;
+            }
+        }
+        return null;
     }
 }
