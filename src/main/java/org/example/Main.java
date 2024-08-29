@@ -6,7 +6,9 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+        int lastId = 1;
         System.out.println("== 게시판 앱 ==");
+
         while (true){
             System.out.print("명령) ");
             String command = sc.nextLine();
@@ -17,7 +19,9 @@ public class Main {
                 String subject = sc.nextLine();
                 System.out.print("내용 : ");
                 String content = sc.nextLine();
-                System.out.println("1번 게시물이 등록되었습니다.");
+
+                System.out.printf("%d번 게시물이 등록되었습니다.\n", lastId);
+                lastId++;
             }
         }
 
