@@ -12,6 +12,11 @@ public class Main {
             String command = sc.nextLine();
             if (command.trim().equals("종료")) {
                 break;
+            } else if (command.trim().equals("등록")) {
+                System.out.print("제목 : ");
+                String subject = sc.nextLine();
+                System.out.print("내용 : ");
+                String content = sc.nextLine();
             }
         }
 
