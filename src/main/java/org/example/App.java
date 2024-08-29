@@ -6,6 +6,8 @@ import java.util.Scanner;
 
 public class App {
     private Scanner sc;
+    List<Article> articleList = new ArrayList<>();
+
     App (Scanner sc) {
         this.sc = sc;
     }
@@ -13,7 +15,6 @@ public class App {
     public void run () {
         System.out.println("== 게시판 앱 ==");
         int lastId = 1;
-        List<Article> articleList = new ArrayList<>();
 
         while (true) {
             System.out.print("명령) ");
@@ -38,7 +39,7 @@ public class App {
 
                 for (int i = articleList.size() - 1; i >= 0; i--) {
                     Article article = articleList.get(i);
-                    System.out.printf("%d / %s / %s\n",article.getId(), article.getSubject(), article.getContent());
+                    System.out.printf("%d / %s / %s\n", article.getId(), article.getSubject(), article.getContent());
                 }
             } else if (command.startsWith("삭제")) {
                 String[] commandList = command.split("\\?", 2);
@@ -48,13 +49,9 @@ public class App {
                 String value = paramsStr[1];
                 int idx = Integer.parseInt(value);
 
-                Article article = null;
-                for (Article item : articleList) {
-                    if(item.getId() == idx) {
-                        article = item;
-                    }
-                }
-                if (article == null){
+                Article article = _getFindId(idx);
+
+                if (article == null) {
                     System.out.printf("%d번 게시글이 존재하지 않습니다.\n", idx);
                 } else {
                     articleList.remove(article);
@@ -68,14 +65,9 @@ public class App {
                 String value = paramsStr[1];
                 int idx = Integer.parseInt(value);
 
-                Article article = null;
-                for (Article item : articleList) {
-                    if(item.getId() == idx) {
-                        article = item;
-                    }
-                }
+                Article article = _getFindId(idx);
 
-                if (article == null){
+                if (article == null) {
                     System.out.printf("%d번 게시글이 존재하지 않습니다.\n", idx);
                 } else {
                     System.out.printf("제목 : %s\n", article.getSubject());
@@ -91,5 +83,13 @@ public class App {
                 }
             }
         }
+    }
+    private Article _getFindId(int id) {
+        for (Article item : articleList) {
+            if (item.getId() == id) {
+                return item;
+            }
+        }
+        return null;
     }
 }
