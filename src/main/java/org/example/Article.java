@@ -20,4 +20,11 @@ public class Article {
     public String getContent() {
         return content;
     }
+
+    public void setSubject (String subject) {
+        this.subject = subject;
+    }
+    public void setContent (String content) {
+        this.content = content;
+    }
 }
