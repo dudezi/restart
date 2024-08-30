@@ -32,14 +32,7 @@ public class ArticleController {
         }
     }
 
-    public void delete(String command) {
-        String[] commandList = command.split("\\?", 2);
-        String actionCode = commandList[0];
-        String[] paramsStr = commandList[1].split("=", 2 );
-        String key = paramsStr[0];
-        String value = paramsStr[1];
-        int idx = Integer.parseInt(value);
-
+    public void delete(int idx) {
         Article article = _getFindById(idx);
 
         if (article == null) {
@@ -50,14 +43,7 @@ public class ArticleController {
         }
     }
 
-    public void modify(String command) {
-        String[] commandList = command.split("\\?", 2);
-        String actionCode = commandList[0];
-        String[] paramsStr = commandList[1].split("=", 2 );
-        String key = paramsStr[0];
-        String value = paramsStr[1];
-        int idx = Integer.parseInt(value);
-
+    public void modify(int idx) {
         Article article = _getFindById(idx);
 
         if (article == null) {

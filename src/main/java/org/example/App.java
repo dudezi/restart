@@ -20,19 +20,21 @@ public class App {
 
         while (true) {
             System.out.print("명령) ");
-            String command = Container.getSc().nextLine().trim();
+//            String command = Container.getSc().nextLine().trim();
+//            Request request = new Request(command);
+            Request request = new Request(Container.getSc().nextLine().trim());
 
-            if (command.equals("종료")) {
+            if (request.getActionCode().equals("종료")) {
                 systemController.exit();
                 break;
-            } else if (command.equals("등록")) {
+            } else if (request.getActionCode().equals("등록")) {
                 articleController.write();
-            } else if (command.equals("목록")) {
+            } else if (request.getActionCode().equals("목록")) {
                 articleController.list();
-            } else if (command.startsWith("삭제")) {
-                articleController.delete(command);
-            } else if (command.startsWith("수정")) {
-                articleController.modify(command);
+            } else if (request.getActionCode().startsWith("삭제")) {
+                articleController.delete(request.getIdx());
+            } else if (request.getActionCode().startsWith("수정")) {
+                articleController.modify(request.getIdx());
             }
         }
     }
