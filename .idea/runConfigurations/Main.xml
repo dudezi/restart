@@ -4,7 +4,7 @@
     <module name="restart.main" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="org.example.*" />
+        <option name="PATTERN" value="org.example.article.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
